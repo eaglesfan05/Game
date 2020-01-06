@@ -1,0 +1,2 @@
+var questions =[]
+var score = 
