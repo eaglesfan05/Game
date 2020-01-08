@@ -4,7 +4,7 @@ var start = document.getElementById("startbutton");
 
 
 //start.onclick = setTime;
-document.getElementById("startbutton").addEventListener("click", setTime());
+start.addEventListener("click", setTime);
 
 function setTime(){
     var timerInterval = setInterval(function(){
@@ -32,8 +32,36 @@ Quiz.guess = function(answer){
         this.score++;
     }
     
-
+//iterate through questions
  this.questionIndex++;  
 }
+
+function questions(text, choices, answer){
+    this.text = text;
+    this.choices = choices;
+    this.answer = answer;
+}
+
+questions.isCorrectAnswer = function(choice){
+    return this.answer === choice;
+}
+//function that will either end quiz or loop through questions and answers
+function initiate(){
+    if(quiz.isEnded()){
+        showScores();
+    else{
+        var element = document.getElementById("question");
+        element.innerHTML = quiz.getElementById().text;
+
+        var choices = quiz.getQuestionIndex().choices;
+            for(var i = 0; i <choices.length; i++){
+            var element = document.getElementById("choice" + i);
+            element.innerHTML = choices[i];
+            guess("btn" + i, choices[i]);
+            }
+            
+    }
+};
+
 
 var questions = [];
